@@ -48,6 +48,14 @@ class dnsmasq(
     notify  => Service[$servicename],
   }
 
+  file { "/etc/resolver/drupal":
+    content => 'nameserver 127.0.0.1',
+    group   => 'wheel',
+    owner   => 'root',
+    require => File['/etc/resolver'],
+    notify  => Service[$servicename],
+  }
+
   homebrew::formula { 'dnsmasq':
     before => Package['boxen/brews/dnsmasq'],
   }
