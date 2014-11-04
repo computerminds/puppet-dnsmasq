@@ -15,7 +15,7 @@ class dnsmasq(
   $logfile    = undef,
 ) {
   require homebrew
-  $servicename = 'dev.dnsmasq'
+  $servicename = "${tld}.dnsmasq"
 
   file { [$configdir, $logdir, $datadir]:
     ensure => directory,
